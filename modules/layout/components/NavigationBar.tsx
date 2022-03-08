@@ -2,11 +2,11 @@ import Link from 'next/link'
 import { Disclosure } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
+import { NextRouter, useRouter } from 'next/router'
 import classNames from '../models/classNames'
 import { NAVIGATION_ITEMS } from '../models/navigationItems'
 
-function navigationItems(router) {
+function navigationItems(router: NextRouter) {
   if (!router.isReady) {
     const items = [...NAVIGATION_ITEMS]
     items[0].isCurrent = true

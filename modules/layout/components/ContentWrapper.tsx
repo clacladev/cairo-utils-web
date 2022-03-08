@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-export default function ContentWrapper({ title, children }) {
+export default function ContentWrapper({ title, children }: { title: string, children: React.ReactNode }) {
   return (
     <>
       <Head>
