@@ -1,5 +1,5 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
-const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 const cssCustomisations = ({ addUtilities }) => {
   addUtilities({
@@ -29,6 +29,5 @@ module.exports = {
   plugins: [
     cssCustomisations,
     require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio'),
   ],
-};
+}

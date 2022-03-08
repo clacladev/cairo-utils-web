@@ -1,9 +1,11 @@
-import Presentation from './Presentation'
+import Header from './Header'
+import ShortStringConverter from './ShortStringConverter'
 
 export default function Index() {
   return (
     <>
-      <Presentation />
+      <Header />
+      <ShortStringConverter />
     </>
   )
 }
