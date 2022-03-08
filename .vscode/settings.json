@@ -1,0 +1,9 @@
+{
+  "eslint.workingDirectories": [
+    "next/modules",
+    "next/pages",
+  ],
+  "files.exclude": {
+    "**/node_modules": true,
+  }
+}

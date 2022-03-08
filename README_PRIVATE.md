@@ -18,19 +18,17 @@ vercel dev   # run the app
 Open [http://localhost:3000/](http://localhost:3000/) to see your Dapp. 
 
 
+## Deploy
 To deploy the UI web app on a live network first add the network details to the [Vercel Environmental Variables](https://vercel.com/ccrnn/cairo-utils-web/settings/environment-variables) file (as per `.env.example`). Set the value for dev, staging and production appropriately.
 
-Commit to one of the three main branches:
-- dev
-- staging ([url](https://cairo-utils-web-git-staging-ccrnn.vercel.app/))
-- production ([url](https://cairo-utils-web.vercel.app))
-
-To force a build:
+Deploy:
 ```
+# Preview (https://cairo-utils-web-ccrnn.vercel.app)
 vercel
-```
 
-Then automatically available at [url](https://cairo-utils-web.vercel.app).
+# Production (https://cairo-utils-web.vercel.app)
+vercel --prod
+```
 
 
 ## Author
