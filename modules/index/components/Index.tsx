@@ -1,7 +1,7 @@
-import StringToFeltArray from '../../forms/components/StringToFeltArray'
 import Header from './Header'
-import ShortStringFeltToString from './ShortStringFeltToString'
-import StringToShortStringFelt from './StringToShortStringFelt'
+import ShortStringFeltToString from '../../forms/components/ShortStringFeltToString'
+import StringToShortStringFelt from '../../forms/components/StringToShortStringFelt'
+import StringToFeltArray from '../../forms/components/StringToFeltArray'
 
 export default function Index() {
   return (

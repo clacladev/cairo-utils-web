@@ -1,7 +1,7 @@
 export default function Section({ title, description, isSeparatorVisible, children }: { title: string, description: string, isSeparatorVisible?: boolean, children: React.ReactNode }) {
   return (
     <>
-      <div className="my-10 sm:mt-0">
+      <div className="my-10">
         <div className="md:grid md:grid-cols-3 md:gap-6">
 
           <div className="md:col-span-1">
