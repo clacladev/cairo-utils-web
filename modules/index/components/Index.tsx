@@ -2,6 +2,7 @@ import Header from './Header'
 import FeltToShortString from './FeltToShortString'
 import ShortStringToFelt from './ShortStringToFelt'
 import StringToFeltArray from './StringToFeltArray'
+import FeltArrayToString from './FeltArrayToString'
 
 export default function Index() {
   return (
@@ -9,7 +10,8 @@ export default function Index() {
       <Header />
       <ShortStringToFelt />
       <FeltToShortString />
-      <StringToFeltArray isSeparatorVisible={false} />
+      <StringToFeltArray />
+      <FeltArrayToString isSeparatorVisible={false} />
     </>
   )
 }

@@ -1,40 +1,44 @@
 import { useState } from 'react'
-import { strToFeltArr } from '../../sekai-studio/models/cairoStringUtils'
+import { feltArrToStr } from '../../sekai-studio/models/cairoStringUtils'
 import InputField from '../../forms/components/InputField'
 import OutputField from '../../forms/components/OutputField'
 import Section from '../../forms/components/Section'
+import { filterNonFeltArrayChars } from '../../common/models/filters'
 
-const FIELD_ID_PREFIX = 'string-to-felt-array'
+const FIELD_ID_PREFIX = 'felt-array-to-string'
 
 function convert(input: string) {
   if (typeof input !== 'string' || input === '') {
     return ''
   }
-  return strToFeltArr(input)
+  const array = input
+    .replaceAll(' ', '')
+    .split(',')
+    .map((val) => BigInt(val))
+  return feltArrToStr(array)
 }
 
-export default function StringToFeltArray({ isSeparatorVisible = true }: { isSeparatorVisible?: boolean }) {
+export default function FeltArrayToString({ isSeparatorVisible = true }: { isSeparatorVisible?: boolean }) {
   const [inputString, setInputString] = useState('')
   const outputString = convert(inputString)
 
   return (
     <Section 
-      title="String -> Felt Array"
-      description="Converts a string into an array of numerical characters in utf-8 encoding"
+      title="Felt Array -> String"
+      description="Converts an array of utf-8 numerical characters into a readable string"
       isSeparatorVisible={isSeparatorVisible}>
 
       <InputField
         value={inputString}
-        onChange={setInputString}
-        placeholder="The string to convert"
-        labelText="Input String"
+        onChange={(val) => setInputString(filterNonFeltArrayChars(val))}
+        placeholder="Comma separated felts"
+        labelText="Felt Array"
         fieldId={`${FIELD_ID_PREFIX}-input`}
-        notes={inputString ? `Length: ${inputString.length}` : undefined}
       />
 
       <OutputField
         value={outputString}
-        labelText="Output Felt Array"
+        labelText="Output String"
         fieldId={`${FIELD_ID_PREFIX}-output`}
         notes={outputString ? `Length: ${outputString.length}` : undefined}
       />

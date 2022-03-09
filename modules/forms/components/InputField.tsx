@@ -3,7 +3,6 @@ const WARNING_BORDER_STYLES = 'border-rose-300 focus:ring-rose-300 focus:border-
 export default function InputField({
   value, 
   onChange, 
-  type = 'text', 
   placeholder,
   labelText,
   fieldId,
@@ -12,7 +11,6 @@ export default function InputField({
 }: { 
   value: any, 
   onChange: (value: any) => void, 
-  type?: string,
   placeholder: string,
   labelText: string,
   fieldId: string,
@@ -25,7 +23,7 @@ export default function InputField({
         {labelText}
       </label>
       <input
-        type={type}
+        type="text"
         name={fieldId}
         id={fieldId}
         className={`mt-1 border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md ${ isWarningActive && WARNING_BORDER_STYLES }`}

@@ -27,7 +27,6 @@ export default function ShortStringToFelt({ isSeparatorVisible = true }: { isSep
       <InputField
         value={inputString}
         onChange={setInputString}
-        type="text"
         placeholder="The string to convert"
         labelText="Input String"
         fieldId={`${FIELD_ID_PREFIX}-input`}
