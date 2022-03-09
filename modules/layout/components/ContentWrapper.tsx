@@ -5,7 +5,6 @@ export default function ContentWrapper({ title, children }: { title: string, chi
     <>
       <Head>
         <title>Cairo Utils on Web - {title}</title>
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </Head>
 
       <main>
