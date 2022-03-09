@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { strToShortStringFelt } from "../../sekai-studio/models/cairoStringUtils"
+import { useState } from 'react'
+import { strToShortStringFelt } from '../../sekai-studio/models/cairoStringUtils'
 
 function convert(input: string) {
   if (typeof input !== 'string' || input === '') {
