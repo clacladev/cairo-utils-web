@@ -1,6 +1,11 @@
 import { useState } from 'react'
+import { SHORT_STRING_LENGTH } from '../../common/models/constants'
 import { shortStringFeltToStr } from '../../sekai-studio/models/cairoStringUtils'
+import InputField from './InputField'
+import OutputField from './OutputField'
 import Section from './Section'
+
+const FIELD_ID_PREFIX = 'short-string-felt-to-string'
 
 function convert(input: string) {
   if (typeof input !== 'string' || input === '') {
@@ -19,40 +24,27 @@ export default function ShortStringFeltToString({ isSeparatorVisible = true }: {
 
   return (
     <Section 
-      title={'Felt -> Short String'}
-      description={'Converts a short string numeral to a readable string (short strings cannot have more than 31 characters)'}
+      title="Felt -> Short String"
+      description="Converts a short string numeral to a readable string (short strings cannot have more than 31 characters)"
       isSeparatorVisible={isSeparatorVisible}>
-      <div className="col-span-6 sm:col-span-4">
-        <label htmlFor="str-to-short-string-felt-input" className="block text-sm font-medium text-gray-900">
-          Input Felt
-        </label>
-        <input
-          type="text"
-          name="str-to-short-string-felt-input"
-          id="str-to-short-string-felt-input"
-          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-          placeholder="The string to convert"
-          value={inputString}
-          onChange={(e) => setInputString(e.target.value)}
-        />
-        <span className="block mt-1 text-xs font-normal text-gray-700">
-          5/31
-        </span>
-      </div>
 
-      <div className="col-span-6 sm:col-span-4">
-        <label htmlFor="str-to-short-string-felt-output" className="block text-sm font-medium text-gray-700">
-          Output String
-        </label>
-        <input
-          type="text"
-          name="str-to-short-string-felt-output"
-          id="str-to-short-string-felt-output"
-          className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-50 text-gray-700 rounded-md"
-          value={outputString ? outputString : ''}
-          disabled={true}
-        />
-      </div>
+      <InputField
+        value={inputString}
+        onChange={setInputString}
+        type="number"
+        placeholder="The felt to convert"
+        labelText="Input Felt"
+        fieldId={`${FIELD_ID_PREFIX}-input`}
+      />
+
+      <OutputField
+        value={outputString ? outputString : ''}
+        labelText="Output String"
+        fieldId={`${FIELD_ID_PREFIX}-output`}
+        notes={`${outputString.length}/${SHORT_STRING_LENGTH}`}
+        isWarningActive={outputString.length > SHORT_STRING_LENGTH}
+      />
+      
     </Section>
   )
 }

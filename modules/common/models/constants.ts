@@ -1,0 +1,5 @@
+const SHORT_STRING_LENGTH = 31
+
+export {
+  SHORT_STRING_LENGTH,
+}
