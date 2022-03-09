@@ -18,7 +18,7 @@ export default function InputField({
   isWarningActive?: boolean,
 }) {
   return (
-    <div className="col-span-6 sm:col-span-4">
+    <div className="col-span-6 lg:col-span-4">
       <label htmlFor={fieldId} className="block text-sm font-medium text-gray-900">
         {labelText}
       </label>
