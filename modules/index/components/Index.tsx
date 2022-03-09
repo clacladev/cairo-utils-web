@@ -1,15 +1,15 @@
 import Header from './Header'
-import ShortStringFeltToString from '../../forms/components/ShortStringFeltToString'
-import StringToShortStringFelt from '../../forms/components/StringToShortStringFelt'
-import StringToFeltArray from '../../forms/components/StringToFeltArray'
+import FeltToShortString from './FeltToShortString'
+import ShortStringToFelt from './ShortStringToFelt'
+import StringToFeltArray from './StringToFeltArray'
 
 export default function Index() {
   return (
     <>
       <Header />
-      <StringToShortStringFelt isSeparatorVisible={true} />
-      <ShortStringFeltToString isSeparatorVisible={true} />
-      <StringToFeltArray />
+      <ShortStringToFelt />
+      <FeltToShortString />
+      <StringToFeltArray isSeparatorVisible={false} />
     </>
   )
 }

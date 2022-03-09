@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { strToShortStringFelt } from '../../sekai-studio/models/cairoStringUtils'
-import InputField from './InputField'
-import OutputField from './OutputField'
-import Section from './Section'
+import InputField from '../../forms/components/InputField'
+import OutputField from '../../forms/components/OutputField'
+import Section from '../../forms/components/Section'
 import { SHORT_STRING_LENGTH } from '../../common/models/constants'
 
 const FIELD_ID_PREFIX = 'str-to-short-string-felt'
@@ -14,7 +14,7 @@ function convert(input: string) {
   return strToShortStringFelt(input)
 }
 
-export default function StringToShortStringFelt({ isSeparatorVisible = true }: { isSeparatorVisible?: boolean }) {
+export default function ShortStringToFelt({ isSeparatorVisible = true }: { isSeparatorVisible?: boolean }) {
   const [inputString, setInputString] = useState('')
   const outputString = convert(inputString)
 

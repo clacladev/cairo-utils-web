@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { strToFeltArr } from '../../sekai-studio/models/cairoStringUtils'
-import InputField from './InputField'
-import OutputField from './OutputField'
-import Section from './Section'
+import InputField from '../../forms/components/InputField'
+import OutputField from '../../forms/components/OutputField'
+import Section from '../../forms/components/Section'
 
 const FIELD_ID_PREFIX = 'string-to-felt-array'
 
