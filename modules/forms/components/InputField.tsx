@@ -28,7 +28,7 @@ export default function InputField({
         id={fieldId}
         className={`mt-1 block w-full shadow-sm sm:text-sm  rounded-md ${ isWarningActive ? 'border-rose-300 focus:ring-rose-300 focus:border-rose-500' : 'border-gray-300 focus:ring-indigo-500 focus:border-indigo-500' }`}
         placeholder={placeholder}
-        value={value}
+        value={value === null || value === undefined ? '' : value}
         onChange={(e) => onChange(e.target.value)}
       />
       <span className="block mt-1 text-xs font-normal text-gray-700">

@@ -21,7 +21,7 @@ export default function OutputField({
         name={fieldId}
         id={fieldId}
         className={`mt-1 block w-full shadow-sm sm:text-sm bg-gray-50 text-gray-700 rounded-md ${ isWarningActive ? 'border-rose-300' : 'border-gray-300'}`}
-        value={value}
+        value={value === null || value === undefined ? '' : value}
         disabled={true}
       />
       <span className="block mt-1 text-xs font-normal text-gray-700">
