@@ -1,21 +1,14 @@
 import { useState } from 'react'
-import { strToFeltArr } from '../../thirdParty/models/cairoStringUtils.sekaiStudio'
 import InputField from '../../forms/components/InputField'
 import OutputField from '../../forms/components/OutputField'
 import Section from '../../forms/components/Section'
+import { stringToFeltArray } from '../../common/models/converters'
 
 const FIELD_ID_PREFIX = 'string-to-felt-array'
 
-function convert(input: string) {
-  if (typeof input !== 'string' || input === '') {
-    return ''
-  }
-  return strToFeltArr(input)
-}
-
 export default function StringToFeltArray({ isSeparatorVisible = true }: { isSeparatorVisible?: boolean }) {
-  const [inputString, setInputString] = useState('')
-  const outputString = convert(inputString)
+  const [input, setInput] = useState('')
+  const { output } = stringToFeltArray(input)
 
   return (
     <Section 
@@ -24,19 +17,19 @@ export default function StringToFeltArray({ isSeparatorVisible = true }: { isSep
       isSeparatorVisible={isSeparatorVisible}>
 
       <InputField
-        value={inputString}
-        onChange={setInputString}
+        value={input}
+        onChange={setInput}
         placeholder="The string to convert"
         labelText="Input String"
         fieldId={`${FIELD_ID_PREFIX}-input`}
-        notes={inputString ? `Length: ${inputString.length}` : undefined}
+        notes={input ? `Length: ${input.length}` : undefined}
       />
 
       <OutputField
-        value={outputString}
+        value={output}
         labelText="Output Felt Array"
         fieldId={`${FIELD_ID_PREFIX}-output`}
-        notes={outputString ? `Length: ${outputString.length}` : undefined}
+        notes={output ? `Length: ${output.length}` : undefined}
       />
 
     </Section>

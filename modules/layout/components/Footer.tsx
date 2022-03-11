@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link'
 
 export default function Footer() {
   return (
@@ -10,7 +10,7 @@ export default function Footer() {
       </span>
       
       <span className="block pt-3">
-        Thanks to <a href="https://github.com/sekai-studio/starknet-libs">sekai-studio/starknet-libs</a> for their cairo_string library.
+        Thanks to <a href="https://github.com/sekai-studio/starknet-libs">sekai-studio/starknet-libs</a> and <a href="https://github.com/dontpanicdao/stark-util">dontpanicdao/stark-util</a> for their Cairo utility libraries.
       </span>
     </div>
   )

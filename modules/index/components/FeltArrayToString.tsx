@@ -1,26 +1,15 @@
 import { useState } from 'react'
-import { feltArrToStr } from '../../thirdParty/models/cairoStringUtils.sekaiStudio'
 import InputField from '../../forms/components/InputField'
 import OutputField from '../../forms/components/OutputField'
 import Section from '../../forms/components/Section'
 import { filterNonFeltArrayChars } from '../../common/models/filters'
+import { feltArrayToString } from '../../common/models/converters'
 
 const FIELD_ID_PREFIX = 'felt-array-to-string'
 
-function convert(input: string) {
-  if (typeof input !== 'string' || input === '') {
-    return ''
-  }
-  const array = input
-    .replaceAll(' ', '')
-    .split(',')
-    .map((val) => BigInt(val))
-  return feltArrToStr(array)
-}
-
 export default function FeltArrayToString({ isSeparatorVisible = true }: { isSeparatorVisible?: boolean }) {
-  const [inputString, setInputString] = useState('')
-  const outputString = convert(inputString)
+  const [input, setInput] = useState('')
+  const { output } = feltArrayToString(input)
 
   return (
     <Section 
@@ -29,18 +18,18 @@ export default function FeltArrayToString({ isSeparatorVisible = true }: { isSep
       isSeparatorVisible={isSeparatorVisible}>
 
       <InputField
-        value={inputString}
-        onChange={(val) => setInputString(filterNonFeltArrayChars(val))}
+        value={input}
+        onChange={(val) => setInput(filterNonFeltArrayChars(val))}
         placeholder="Comma separated felts"
         labelText="Felt Array"
         fieldId={`${FIELD_ID_PREFIX}-input`}
       />
 
       <OutputField
-        value={outputString}
+        value={output}
         labelText="Output String"
         fieldId={`${FIELD_ID_PREFIX}-output`}
-        notes={outputString ? `Length: ${outputString.length}` : undefined}
+        notes={output ? `Length: ${output.length}` : undefined}
       />
 
     </Section>

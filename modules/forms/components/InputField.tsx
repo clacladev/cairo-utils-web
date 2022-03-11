@@ -1,5 +1,6 @@
 export default function InputField({
   value, 
+  type = 'text',
   onChange, 
   placeholder,
   labelText,
@@ -8,6 +9,7 @@ export default function InputField({
   isWarningActive = false,
 }: { 
   value: any, 
+  type?: string,
   onChange(value: any): void, // eslint-disable-line no-unused-vars
   placeholder: string,
   labelText: string,
@@ -21,7 +23,7 @@ export default function InputField({
         {labelText}
       </label>
       <input
-        type="text"
+        type={type}
         name={fieldId}
         id={fieldId}
         className={`mt-1 block w-full shadow-sm sm:text-sm  rounded-md ${ isWarningActive ? 'border-rose-300 focus:ring-rose-300 focus:border-rose-500' : 'border-gray-300 focus:ring-indigo-500 focus:border-indigo-500' }`}

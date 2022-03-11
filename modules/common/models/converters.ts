@@ -1,22 +1,89 @@
 import { BN } from 'bn.js'
+import { feltArrToStr, shortStringFeltToStr, strToFeltArr, strToShortStringFelt } from '../../thirdParty/models/cairoStringUtils.sekaiStudio'
 import { toBN } from '../../thirdParty/models/utils.dontpanicdao'
 
 const FELT_MAX_VAL = new BN('3618502788666131106986593281521497120414687020801267626233049500247285301248', 10)
-// const UINT256_MAX_VAL_HIGH = new BN('340282366920938463463374607431768211456', 10)
+
+const DEFAULT_RESULT_OBJECT = {
+  output: null,
+  isValid: true
+}
 
 export interface ConvertOutput<T> {
   output: T
   isValid: boolean | null
 }
 
-function shortStringToFelt(input: string): ConvertOutput<BN | null> {
-  const value = toBN(input)
+function toBigNumber(input: any): BN | null {
+  const number = toBN(input)
+  return BN.isBN(number) ? number : null
+}
+
+function decimalToFelt(input: string): ConvertOutput<BN | null> {
+  const inputInt = Number(input)
+  if (isNaN(inputInt)) {
+    return DEFAULT_RESULT_OBJECT
+  }
+  const value = toBigNumber(input)
   return {
-    output: value ? value : null,
+    output: value,
     isValid: value ? value.lt(FELT_MAX_VAL) : null
   }
 }
 
+function shortStringToFelt(input: string): ConvertOutput<BN | null> {
+  if (typeof input !== 'string' || input === '') {
+    return DEFAULT_RESULT_OBJECT
+  }
+  const value = strToShortStringFelt(input)
+  const valueBN = toBigNumber(value.toString())
+  return {
+    output: value ? value : null,
+    isValid: valueBN ? valueBN.lt(FELT_MAX_VAL) : null
+  }
+}
+
+function feltToShortString(input: string): ConvertOutput<BN | null> {
+  const inputInt = Number(input)
+  if (isNaN(inputInt)) {
+    return DEFAULT_RESULT_OBJECT
+  }
+  const number = BigInt(input)
+  const value = shortStringFeltToStr(number)
+  const numberBN = toBigNumber(value)
+  return {
+    output: value,
+    isValid: numberBN ? numberBN.lt(FELT_MAX_VAL) : null
+  }
+}
+
+function stringToFeltArray(input: string): ConvertOutput<string[] | null> {
+  const value = strToFeltArr(input)
+    .map((val) => val.toString())
+  return {
+    output: value ? value : null,
+    isValid: true
+  }
+}
+
+function feltArrayToString(input: string): ConvertOutput<string | null> {
+  if (typeof input !== 'string' || input === '') {
+    return DEFAULT_RESULT_OBJECT
+  }
+  const valueArr = input.replaceAll(' ', '')
+    .split(',')
+    .map((val) => BigInt(val))
+  const value = feltArrToStr(valueArr)
+  return {
+    output: value ? value : null,
+    isValid: true
+  }
+}
+
 export {
+  decimalToFelt,
   shortStringToFelt,
+  feltToShortString,
+  stringToFeltArray,
+  feltArrayToString,
 }
