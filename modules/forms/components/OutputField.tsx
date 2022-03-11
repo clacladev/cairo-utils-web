@@ -1,5 +1,3 @@
-const WARNING_BORDER_STYLES = 'border-rose-300'
-
 export default function OutputField({
   value,
   labelText,
@@ -22,7 +20,7 @@ export default function OutputField({
         type="text"
         name={fieldId}
         id={fieldId}
-        className={`mt-1 block w-full shadow-sm sm:text-sm bg-gray-50 border-gray-300 text-gray-700 rounded-md ${ isWarningActive && WARNING_BORDER_STYLES}`}
+        className={`mt-1 block w-full shadow-sm sm:text-sm bg-gray-50 text-gray-700 rounded-md ${ isWarningActive ? 'border-rose-300' : 'border-gray-300'}`}
         value={value}
         disabled={true}
       />

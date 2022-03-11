@@ -27,6 +27,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx", 
-    "jest.config.js"
+    "**/*.js"
   ]
 }

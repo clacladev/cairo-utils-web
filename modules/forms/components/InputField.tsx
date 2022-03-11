@@ -1,5 +1,3 @@
-const WARNING_BORDER_STYLES = 'border-rose-300 focus:ring-rose-300 focus:border-rose-500'
-
 export default function InputField({
   value, 
   onChange, 
@@ -10,7 +8,7 @@ export default function InputField({
   isWarningActive = false,
 }: { 
   value: any, 
-  onChange: (value: any) => void, 
+  onChange(value: any): void, // eslint-disable-line no-unused-vars
   placeholder: string,
   labelText: string,
   fieldId: string,
@@ -26,7 +24,7 @@ export default function InputField({
         type="text"
         name={fieldId}
         id={fieldId}
-        className={`mt-1 border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md ${ isWarningActive && WARNING_BORDER_STYLES }`}
+        className={`mt-1 block w-full shadow-sm sm:text-sm  rounded-md ${ isWarningActive ? 'border-rose-300 focus:ring-rose-300 focus:border-rose-500' : 'border-gray-300 focus:ring-indigo-500 focus:border-indigo-500' }`}
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}

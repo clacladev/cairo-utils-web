@@ -1,22 +1,22 @@
-import { useState } from 'react'
-import { strToShortStringFelt } from '../../thirdParty/models/cairoStringUtils.sekaiStudio'
+import { useEffect, useState } from 'react'
+import BN from 'bn.js'
 import InputField from '../../forms/components/InputField'
 import OutputField from '../../forms/components/OutputField'
 import Section from '../../forms/components/Section'
-import { SHORT_STRING_LENGTH } from '../../common/models/constants'
+import { shortStringToFelt } from '../../common/models/converters'
 
 const FIELD_ID_PREFIX = 'str-to-short-string-felt'
 
-function convert(input: string) {
-  if (typeof input !== 'string' || input === '') {
-    return ''
-  }
-  return strToShortStringFelt(input)
-}
-
 export default function ShortStringToFelt({ isSeparatorVisible = true }: { isSeparatorVisible?: boolean }) {
-  const [inputString, setInputString] = useState('')
-  const outputString = convert(inputString)
+  const [input, setInput] = useState('')
+  const [output, setOutput] = useState<BN | null>()
+  const [isValid, setIsValid] = useState<boolean | null>()
+  
+  useEffect(() => {
+    const res = shortStringToFelt(input)
+    setOutput(res.output)
+    setIsValid(res.isValid)
+  }, [input])
 
   return (
     <Section 
@@ -25,25 +25,26 @@ export default function ShortStringToFelt({ isSeparatorVisible = true }: { isSep
       isSeparatorVisible={isSeparatorVisible}>
 
       <InputField
-        value={inputString}
-        onChange={setInputString}
+        value={input}
+        onChange={setInput}
         placeholder="The string to convert"
         labelText="Input String"
         fieldId={`${FIELD_ID_PREFIX}-input`}
-        notes={`${inputString.length}/${SHORT_STRING_LENGTH}`}
-        isWarningActive={inputString.length > SHORT_STRING_LENGTH}
+        notes={`Length: ${input.length}`}
       />
 
       <OutputField
-        value={outputString ? outputString.toString(10) : ''}
+        value={output ? output.toString(10) : ''}
         labelText="Output Felt"
         fieldId={`${FIELD_ID_PREFIX}-felt-output`}
+        isWarningActive={isValid !== null && !isValid}
       />
 
       <OutputField
-        value={outputString ? `0x${outputString.toString(16)}` : ''}
+        value={output ? `0x${output.toString(16)}` : ''}
         labelText="Output Hex"
         fieldId={`${FIELD_ID_PREFIX}-hex-output`}
+        isWarningActive={isValid !== null && !isValid}
       />
 
     </Section>
