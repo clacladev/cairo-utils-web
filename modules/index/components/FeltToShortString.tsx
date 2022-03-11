@@ -31,8 +31,8 @@ export default function FeltToShortString({ isSeparatorVisible = true }: { isSep
         value={output ? output : ''}
         labelText="Output String"
         fieldId={`${FIELD_ID_PREFIX}-output`}
-        notes={`${output.length}/${SHORT_STRING_LENGTH}`}
-        isWarningActive={output.length > SHORT_STRING_LENGTH}
+        notes={`${output?.length}/${SHORT_STRING_LENGTH}`}
+        isWarningActive={output !== null && output.length > SHORT_STRING_LENGTH}
       />
       
     </Section>

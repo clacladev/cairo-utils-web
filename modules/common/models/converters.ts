@@ -1,4 +1,5 @@
 import { BN } from 'bn.js'
+import * as BNType from 'bn.js'
 import { feltArrToStr, shortStringFeltToStr, strToFeltArr, strToShortStringFelt } from '../../thirdParty/models/cairoStringUtils.sekaiStudio'
 import { toBN } from '../../thirdParty/models/utils.dontpanicdao'
 
@@ -14,12 +15,12 @@ export interface ConvertOutput<T> {
   isValid: boolean | null
 }
 
-function toBigNumber(input: any): BN | null {
+function toBigNumber(input: any): BNType | null {
   const number = toBN(input)
   return BN.isBN(number) ? number : null
 }
 
-function decimalToFelt(input: string): ConvertOutput<BN | null> {
+function decimalToFelt(input: string): ConvertOutput<BNType | null> {
   const inputInt = Number(input)
   if (isNaN(inputInt)) {
     return DEFAULT_RESULT_OBJECT
@@ -31,19 +32,19 @@ function decimalToFelt(input: string): ConvertOutput<BN | null> {
   }
 }
 
-function shortStringToFelt(input: string): ConvertOutput<BN | null> {
+function shortStringToFelt(input: string): ConvertOutput<BNType | null> {
   if (typeof input !== 'string' || input === '') {
     return DEFAULT_RESULT_OBJECT
   }
   const value = strToShortStringFelt(input)
   const valueBN = toBigNumber(value.toString())
   return {
-    output: value ? value : null,
+    output: valueBN ? valueBN : null,
     isValid: valueBN ? valueBN.lt(FELT_MAX_VAL) : null
   }
 }
 
-function feltToShortString(input: string): ConvertOutput<BN | null> {
+function feltToShortString(input: string): ConvertOutput<string | null> {
   const inputInt = Number(input)
   if (isNaN(inputInt)) {
     return DEFAULT_RESULT_OBJECT
