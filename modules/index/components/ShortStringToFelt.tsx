@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { strToShortStringFelt } from '../../sekai-studio/models/cairoStringUtils'
+import { strToShortStringFelt } from '../../thirdParty/models/cairoStringUtils.sekaiStudio'
 import InputField from '../../forms/components/InputField'
 import OutputField from '../../forms/components/OutputField'
 import Section from '../../forms/components/Section'

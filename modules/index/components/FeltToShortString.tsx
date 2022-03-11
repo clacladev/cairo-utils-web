@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { SHORT_STRING_LENGTH } from '../../common/models/constants'
-import { shortStringFeltToStr } from '../../sekai-studio/models/cairoStringUtils'
+import { shortStringFeltToStr } from '../../thirdParty/models/cairoStringUtils.sekaiStudio'
 import InputField from '../../forms/components/InputField'
 import OutputField from '../../forms/components/OutputField'
 import Section from '../../forms/components/Section'

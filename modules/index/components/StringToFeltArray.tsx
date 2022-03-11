@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { strToFeltArr } from '../../sekai-studio/models/cairoStringUtils'
+import { strToFeltArr } from '../../thirdParty/models/cairoStringUtils.sekaiStudio'
 import InputField from '../../forms/components/InputField'
 import OutputField from '../../forms/components/OutputField'
 import Section from '../../forms/components/Section'

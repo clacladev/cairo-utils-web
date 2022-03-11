@@ -9,13 +9,13 @@
  * @returns {bigint} - The short string hex value
  */
  export function strToShortStringFelt(str: string): bigint {
-  const strB = Buffer.from(str);
+  const strB = Buffer.from(str)
   return BigInt(
     strB.reduce((memo, byte) => {
-      memo += byte.toString(16);
-      return memo;
+      memo += byte.toString(16)
+      return memo
     }, '0x'),
-  );
+  )
 }
 
 /**
@@ -25,8 +25,8 @@
  * @returns {string} - The readable string
  */
 export function shortStringFeltToStr(felt: bigint): string {
-  const newStrB = Buffer.from(felt.toString(16), 'hex');
-  return newStrB.toString();
+  const newStrB = Buffer.from(felt.toString(16), 'hex')
+  return newStrB.toString()
 }
 
 /** Cairo Field Element Arrays allow for much bigger strings (up to 2^15 characters) and manipulation is implemented on-chain **/
@@ -37,8 +37,8 @@ export function shortStringFeltToStr(felt: bigint): string {
  * @returns {bigint[]} - The string converted as an array of numerical characters
  */
 export function strToFeltArr(str: string): bigint[] {
-  const strArr = str.split('');
-  return strArr.map(char => BigInt(Buffer.from(char)[0].toString(10)));
+  const strArr = str.split('')
+  return strArr.map(char => BigInt(Buffer.from(char)[0].toString(10)))
 }
 
 /**
@@ -47,5 +47,5 @@ export function strToFeltArr(str: string): bigint[] {
  * @returns {string} - The readable string
  */
 export function feltArrToStr(felts: bigint[]): string {
-  return felts.reduce((memo, felt) => memo + Buffer.from(felt.toString(16), 'hex').toString(), '');
+  return felts.reduce((memo, felt) => memo + Buffer.from(felt.toString(16), 'hex').toString(), '')
 }

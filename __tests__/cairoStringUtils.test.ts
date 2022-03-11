@@ -1,4 +1,5 @@
-import { feltArrToStr, shortStringFeltToStr, strToFeltArr, strToShortStringFelt } from "../modules/sekai-studio/models/cairoStringUtils"
+/* eslint-disable no-undef */
+import { feltArrToStr, shortStringFeltToStr, strToFeltArr, strToShortStringFelt } from '../modules/thirdParty/models/cairoStringUtils.sekaiStudio'
 
 describe('cairoStringUtils', () => {
   describe('strToShortStringFelt', () => {
